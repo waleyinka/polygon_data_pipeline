@@ -11,4 +11,4 @@ ________________________________________________________________________________
 
 - API Extraction: Fetching stock tickers and metadata from Polygon.io using Python.
 
-- Data Export: Writing raw data into CSV files with a consistent schema for ingestion.
+- Data Export: Writing raw data into CSV file (tickers.csv) with a consistent schema for ingestion.
