@@ -8,7 +8,7 @@ This project fetches comprehensive stock ticker information from Polygon.io, inc
 
 ## Features
 
-- **Real-time Data Extraction**: Fetches up to 1000 stock tickers per request with automatic pagination
+- **Batch Data Extraction**: Fetches up to 1000 stock tickers per request with automatic pagination
 - **Rate Limiting**: Implements 15-second delays between API requests to respect Polygon.io limits
 - **Cloud Data Warehouse Integration**: Direct loading into Snowflake with proper schema management
 - **Automated Scheduling**: Configurable job scheduling for continuous data updates
@@ -39,11 +39,12 @@ Polygon.io API → Python Script → Snowflake Data Warehouse
 2. **Create and activate virtual environment**
    ```bash
    python3 -m venv my_env
-   source my_env/bin/activate  # On Windows WSL: ./my_env/bin/activate
+   source my_env/bin/activate  # On Windows WSL
    ```
 
 3. **Install dependencies**
    ```bash
+   pip install snowflake-connector-python **python-dotenv** **requests** **schedule**
    pip install snowflake-connector-python python-dotenv requests schedule
    ```
 
@@ -73,6 +74,20 @@ Polygon.io API → Python Script → Snowflake Data Warehouse
    - Ensure your Snowflake user has CREATE TABLE and INSERT permissions
    - Note your account identifier format
 
+## 4. Usage (Running the Pipeline)
+
+To run the pipeline and schedule continuous updates:
+
+1.  **Run the script once (Manual Execution):**
+    ```bash
+    python3 script.py
+    ```
+2.  **Start the automated scheduler:**
+    ```bash
+    python scheduler.py
+    # This will run the extraction job based on the schedule defined in the file
+    ```
+
 ## Data Schema
 
 The pipeline extracts the following ticker information:
@@ -99,7 +114,7 @@ The pipeline extracts the following ticker information:
 stock_trading_app/
 ├── script.py              # Main data extraction and loading script
 ├── scheduler.py           # Automated job scheduler
-├── requirements.txt       # Python dependencies
+├── requirements.txt       # List of installed Python dependencies
 ├── .env                   # Environment variables (create this)
 ├── .gitignore            # Git ignore rules
 └── README.md             # This file
