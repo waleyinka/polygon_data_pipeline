@@ -178,3 +178,4 @@ widgetsnbextension==4.0.14
 zipp==1.0.0
 zope.interface==5.4.0
 openai
+snowflake-connector-python
