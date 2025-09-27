@@ -45,7 +45,6 @@ Polygon.io API → Python Script → Snowflake Data Warehouse
 3. **Install dependencies**
    ```bash
    pip install snowflake-connector-python **python-dotenv** **requests** **schedule**
-   pip install snowflake-connector-python python-dotenv requests schedule
    ```
 
 ## Configuration
